@@ -1,0 +1,36 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "My Portfolio",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "gh-pages -b master -d dist -m \"See branch 'gh-pages' for detailed changes\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/PratikBhusal/pratikbhusal.github.io.git"
+  },
+  "keywords": [
+    "portfolio"
+  ],
+  "author": "Pratik Bhusal",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/PratikBhusal/pratikbhusal.github.io/issues"
+  },
+  "homepage": "https://github.com/PratikBhusal/pratikbhusal.github.io",
+  "devDependencies": {
+    "browser-sync": "^2.26.7",
+    "gh-pages": "^2.0.1",
+    "gulp": "^4.0.2",
+    "gulp-clean-css": "^4.2.0",
+    "gulp-load-plugins": "^2.0.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-sourcemaps": "^2.6.5",
+    "node-sass": "^4.12.0"
+  },
+  "dependencies": {
+    "del": "^5.0.0"
+  }
+}
