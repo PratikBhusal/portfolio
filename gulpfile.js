@@ -15,13 +15,13 @@ const cleanCSS = require('gulp-clean-css');
 // });
 // Plugins }}}
 
-// function deploy() {
-//     // Find all files in dist folder
-//     return gulp.src("dist/**/*")
-
-//     // Deploy to master branch
-//     .pipe( ghPages({branch: "master"}) );
-// }
+function deploy() {
+    // Deploy dist folder to master branch
+    return ghPages.publish('dist', {
+        message: "See branch 'gh-pages' for detailed changes",
+        branch: 'master'
+    });
+}
 
 // Compile SCSS into CSS
 function style() {
@@ -62,7 +62,7 @@ function watch(done) {
     done();
 }
 
-// exports.deploy = deploy;
+exports.deploy = deploy;
 exports.style = style;
 exports.watch = watch;
 exports.default = watch;
