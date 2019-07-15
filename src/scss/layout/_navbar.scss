@@ -1,0 +1,66 @@
+$transition_length: 0.5s;
+
+
+#nav-menu {
+    padding-top: 0px;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    // overflow: hidden;
+    overflow: hidden;
+    width: 100%;
+    background-color: $primary-navbar-color;
+    z-index: 500; // Be always on top
+
+    ul {
+        display: none;
+    }
+
+
+    li a {
+        display: none;
+    }
+
+    .menu-icon {
+        position: relative;
+        left: 10px;
+        top: 10px;
+        // display: inline-block;
+        z-index: 1;
+        padding: 8px 5px;
+    }
+
+    img {
+        float: left;
+        color: white;
+    }
+
+
+    // Desktop Mode
+    @media screen and (min-width: 48em){
+
+        .menu-icon {
+            display: none;
+        }
+
+
+        ul {
+            display: block;
+            list-style: none;
+            // padding: 15px 10px; // (top/bottom) (left/right) padding)
+            // border-bottom: 1px solid rgba(100, 100, 100, 0.3);
+        }
+
+        li {
+            a {
+                display: block;
+                float: left;
+                color: white;
+                padding: 20px 20px;
+                text-decoration: none;
+            }
+        }
+
+
+    }
+}

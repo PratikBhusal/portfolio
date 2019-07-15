@@ -1,0 +1,89 @@
+$transition_length: 0.25s ease-in-out;
+$closed-transform: rotate(0deg);
+$foo: 9px;
+$bar: 18px;
+$baz: 36px;
+
+.menu-icon {
+  width: 30px;
+  height: 40px;
+  // left: 40px;
+  // position: relative;
+  position: absolute;
+  background: $primary-navbar-color;
+  border: none;
+  cursor: pointer;
+  -webkit-transform: $closed-transform;
+  -moz-transform:    $closed-transform;
+  -o-transform:      $closed-transform;
+  transform:         $closed-transform;
+  -webkit-transition: $transition_length;
+  -moz-transition:    $transition_length;
+  -o-transition:      $transition_length;
+  transition:         $transition_length;
+  user-select: none;
+
+
+  span {
+    display: block;
+    position: absolute;
+    height: 10%;
+    width: 100%;
+    // background: #dfdf;
+    background: white;
+    border-radius: $foo; // Round off bar ends
+    opacity: 1;
+    left: 0;
+    top: 0;
+    -webkit-transform: $closed-transform;
+    -moz-transform:    $closed-transform;
+    -o-transform:      $closed-transform;
+    transform:         $closed-transform;
+    -webkit-transition: $transition_length;
+    -moz-transition:    $transition_length;
+    -o-transition:      $transition_length;
+    transition:         $transition_length;
+
+
+    // Top Bar
+    &:nth-child(1) {
+      top: 0px;
+    }
+
+    // Middle Bars
+    &:nth-child(2), &:nth-child(3) {
+     top: 15px;
+    }
+
+    // Bottom Bar
+    &:nth-child(4) {
+      top: 30px;
+    }
+
+  }
+
+  &.open span {
+    // Fade out to center the top and bottom bars
+    &:nth-child(1), &:nth-child(4) {
+      top:   $bar;
+      width: 0%;
+      left:  50%;
+    }
+
+    //top-left to bottom-right diagonal
+    &:nth-child(2) {
+      -webkit-transform: rotate(45deg);
+      -moz-transform:    rotate(45deg);
+      -o-transform:      rotate(45deg);
+      transform:         rotate(45deg);
+    }
+
+    //bottom-left to top-right diagonal
+    &:nth-child(3) {
+      -webkit-transform: rotate(-45deg);
+      -moz-transform:    rotate(-45deg);
+      -o-transform:      rotate(-45deg);
+      transform:         rotate(-45deg);
+    }
+  }
+}

@@ -15,7 +15,7 @@ const extendedPlugins = require('gulp-load-plugins')({
 
 // Clean built files
 function clean() {
-    return extendedPlugins.del(["dist/style"]);
+    return extendedPlugins.del(["dist/style", "dist/scripts"]);
 }
 
 function publish_site() {
@@ -28,9 +28,6 @@ function publish_site() {
 
 // Compile SCSS into CSS
 function css() {
-    // Remove any unncessary files
-    clean();
-
     // Find .scss File(s)
     return gulp.src('src/scss/main.scss')
 
@@ -38,6 +35,7 @@ function css() {
     .pipe(plugins.sourcemaps.init())
 
     // Pass .scss file(s) to sass compiler. Return any errors if they exist
+    // Use 'compressed'/'expanded' as need be
     .pipe( plugins.sass({outputStyle: 'compressed'}).on(
         'error', plugins.sass.logError)
     )
@@ -56,20 +54,40 @@ function css() {
     .pipe( extendedPlugins.browserSync.stream() );
 }
 
+// Compress javascript
+function js() {
+    return gulp
+
+    // Find .js File(s)
+    .src('src/scripts/**/*.js')
+
+    // Concatenate the files
+    .pipe(plugins.concat('scripts.js'))
+
+    // Compress
+    .pipe( plugins.uglify() )
+
+    // Save compiled .css files to dist/scripts
+    .pipe(gulp.dest('dist/scripts'));
+}
+
 function watch() {
     extendedPlugins.browserSync.init({
         server: {
             baseDir: 'dist/'
         },
         // port: 6411,
+        ghostMode: false,
         notify: false
     });
     gulp.watch('src/scss/**/*.scss', css);
+    gulp.watch('src/scripts/**/*.js', js);
     gulp.watch('dist/**/*.html').on('change', extendedPlugins.browserSync.reload);
+    gulp.watch('dist/**/*.js').on('change', extendedPlugins.browserSync.reload);
 }
 
 exports.clean = clean;
-exports.build = gulp.series(clean, gulp.parallel(css));
+exports.build = gulp.series(clean, gulp.parallel(css, js));
 exports.deploy = gulp.series(exports.build, publish_site);
-exports.watch = watch;
-exports.default = watch;
+exports.watch = gulp.series(exports.build, watch);
+exports.default = exports.watch
