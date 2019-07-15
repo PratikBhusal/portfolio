@@ -1,0 +1,1 @@
+function toggleSidenav(){document.getElementById("menu-toggle").classList.toggle("open")}
