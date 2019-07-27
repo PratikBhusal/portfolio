@@ -1,66 +1,115 @@
 $transition_length: 0.5s;
 
 
+// Top bar
 #nav-menu {
     padding-top: 0px;
     position: fixed;
     top: 0px;
     left: 0px;
-    // overflow: hidden;
+    height: 100%;
     overflow: hidden;
-    width: 100%;
     background-color: $primary-navbar-color;
-    z-index: 500; // Be always on top
+    z-index: 1000; // Be always on top
+
+    #nav-bar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 56px;
+        background-color: $primary-navbar-color;
+        z-index: -1000; // Always be on bottom
+    }
+
+
+}
+
+// Mobile Mode
+#nav-menu {
+    .menu-icon {
+        position: fixed;
+        background-color: $primary-navbar-color;
+        left: 10px;
+        top: 18px;
+        // display: block;
+        z-index: 100;
+        transition: margin-left .5s;
+    }
+
+    #swipe-area {
+        content: '';
+        position: fixed;
+        height: 100%;
+        border-color: transparent;
+        border-style: solid;
+        border-left-width: 40px;
+        z-index: -1;
+    }
 
     ul {
-        display: none;
+        height: 100%;
+        z-index: 1;
+        width: 0px;
+        float: left;
+        transition: width .5s;
+        list-style: none;
     }
 
 
     li a {
-        display: none;
-    }
+        display: block;
+        font-size: 25px;
+        padding: 20px 20px;
+        color: #ddd;
+        text-decoration: none;
 
-    .menu-icon {
-        position: relative;
-        left: 10px;
-        top: 10px;
-        // display: inline-block;
-        z-index: 1;
-        padding: 8px 5px;
+        &:hover {
+            background: #ddd;
+            color: black;
+        }
     }
 
     img {
-        float: left;
-        color: white;
+        display: block;
+        width: 80%;
+        margin: 0 auto;
+        padding-top: 30px;
     }
+}
 
+// Desktop Mode
+#nav-menu {
+    @media screen and (min-width: 768px){
 
-    // Desktop Mode
-    @media screen and (min-width: 48em){
+        height: initial;
+        width: 100%;
 
         .menu-icon {
             display: none;
         }
 
+        #swipe-area {
+            display: none;
+        }
+
 
         ul {
-            display: block;
-            list-style: none;
+            width: 100%;
+            transition: none;
             // padding: 15px 10px; // (top/bottom) (left/right) padding)
             // border-bottom: 1px solid rgba(100, 100, 100, 0.3);
         }
 
-        li {
-            a {
-                display: block;
-                float: left;
-                color: white;
-                padding: 20px 20px;
-                text-decoration: none;
-            }
+        li a {
+            font-size: 16px;
+            display: block;
+            float: left;
+            padding: 20px 20px;
+            text-decoration: none;
         }
 
 
     }
+
 }

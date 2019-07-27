@@ -65,7 +65,7 @@ function js() {
     .pipe(plugins.concat('scripts.js'))
 
     // Compress
-    .pipe( plugins.uglify() )
+    // .pipe( plugins.uglify() )
 
     // Save compiled .css files to dist/scripts
     .pipe(gulp.dest('dist/scripts'));

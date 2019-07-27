@@ -1,15 +1,14 @@
 @charset 'utf-8';
 
 @import
-    'abstracts/variables';
+    'abstracts/variables',
+    'abstracts/notransition';
 
 @import
     'base/reset';
 
 @import
     'layout/navbar';
-    // 'layout/navbar/sidenav',
-    // 'layout/navbar/topnav';
 
 @import
     'components/menu-icon';
