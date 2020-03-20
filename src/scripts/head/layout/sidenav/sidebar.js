@@ -1,4 +1,4 @@
-let isSidenavOpen = false;
+var isSidenavOpen = false;
 
 function toggleSidenav() {
     // If in mobile mode
@@ -37,8 +37,8 @@ function resetNavMenu() {
         if (isSidenavOpen) {
             document.getElementById('menu-toggle').classList.add('notransition');
             var menuToggleBars = document.getElementById('menu-toggle').getElementsByTagName('span');
-            for (bar of menuToggleBars) {
-                bar.classList.add('notransition');
+            for (i in menuToggleBars) {
+                menuToggleBars[i].classList.add('notransition');
             }
 
             document.getElementById('menu-toggle').classList.toggle("open");
@@ -46,8 +46,8 @@ function resetNavMenu() {
             document.getElementById('menu-toggle').offsetHeight;
             document.getElementById('swipe-area').style.borderLeftWidth = "40px";
 
-            for (bar of menuToggleBars) {
-                bar.classList.remove('notransition');
+            for (i in menuToggleBars) {
+                menuToggleBars[i].classList.remove('notransition');
             }
             document.getElementById('menu-toggle').classList.remove('notransition');
             isSidenavOpen = false;
